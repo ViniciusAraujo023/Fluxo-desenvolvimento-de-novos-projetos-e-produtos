@@ -392,8 +392,11 @@ function notifyNewIdea(project) {
    Preencha as duas constantes abaixo com os dados do seu projeto
    Supabase (Project Settings → API):
    --------------------------------------------------------- */
-const SUPABASE_URL = "https://usyajcoisqhlhcuoplqt.supabase.co"; // ex: "https://xxxxxxxxxxxx.supabase.co"
-const SUPABASE_ANON_KEY = "sb_publishable_zHKLjz7nf01h8PicTn_0EQ_49kH9-JP"; // "anon public" key do projeto
+const SUPABASE_URL = usyajcoisqhlhcuoplqt.supabase.co
+  import.meta.env.VITE_SUPABASE_URL;
+
+const SUPABASE_ANON_KEY = sb_publishable_zHKLjz7nf01h8PicTn_0EQ_49kH9-JP
+  import.meta.env.VITE_SUPABASE_ANON_KEY;
 const SUPABASE_READY = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
 
 async function supaRequest(path, options = {}) {
