@@ -18,4 +18,5 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+    background: red !important;
 }
