@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-
-console.log("CSS IMPORTADO");
-
 import App from "./App";
+
+console.log("MAIN CARREGADO");
 
 ReactDOM.createRoot(
   document.getElementById("root")
@@ -13,3 +12,4 @@ ReactDOM.createRoot(
     <App />
   </React.StrictMode>
 );
+``
