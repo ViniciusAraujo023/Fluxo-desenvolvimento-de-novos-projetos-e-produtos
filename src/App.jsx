@@ -288,7 +288,7 @@ const EMAILJS_TEMPLATE_ID = ""; // ex: "template_xyz789"
 const EMAILJS_PUBLIC_KEY = ""; // ex: "AbCdEfGhIjKlMnOp"
 const EMAILJS_READY = Boolean(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY);
 
-const NOTIFY_EMAIL = "viniciusalmeida@soprano.com.br";
+const NOTIFY_EMAIL = "danielscotti@soprano.com.br";
 
 function loadEmailJsScript() {
   return new Promise((resolve, reject) => {
