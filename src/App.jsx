@@ -334,7 +334,7 @@ function emailParams(project) {
 function buildIdeaMailto(project) {
   const p = emailParams(project);
   const body = [
-    "Uma nova ideia de produto foi cadastrada e aguarda avaliação. \n https://fluxo-desenvolvimento-de-novos-proj.vercel.app/",
+    "Uma nova ideia de produto foi cadastrada e aguarda avaliação.",
     "",
     `Projeto: ${p.projeto}`,
     `Ideia: ${p.ideia}`,
@@ -347,6 +347,8 @@ function buildIdeaMailto(project) {
     `Justificativa: ${p.justificativa}`,
     "",
     "Acesse o fluxo de engenharia para avaliar e confirmar ou recusar esta ideia.",
+    "https://fluxo-desenvolvimento-de-novos-proj.vercel.app/",
+    "",
   ].join("\n");
   return `mailto:${NOTIFY_EMAIL}?subject=${encodeURIComponent(p.subject)}&body=${encodeURIComponent(body)}`;
 }
