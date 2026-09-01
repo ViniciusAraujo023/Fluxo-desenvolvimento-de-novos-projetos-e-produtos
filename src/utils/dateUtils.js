@@ -11,5 +11,5 @@ const fmtDate = (iso) => {
 
 export {
   todayISO,
-  ftmDate,
+  fmtDate,
 }:
