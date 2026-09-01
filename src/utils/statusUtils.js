@@ -8,12 +8,15 @@ const statusBadgeClass = (status) => {
   switch (status) {
     case STATUS.CONCLUIDO: 
       return "bg-emerald-100 text-emerald-700";
+      
     case STATUS.RECUSADO: 
       return "bg-rose-100 text-rose-700";
+      
     case STATUS.CANCELADO: 
       return "bg-slate-200 text-slate-600";
-    default: r
-      eturn "bg-amber-100 text-amber-700";
+      
+    default: 
+      return "bg-amber-100 text-amber-700";
   }
 };
 
