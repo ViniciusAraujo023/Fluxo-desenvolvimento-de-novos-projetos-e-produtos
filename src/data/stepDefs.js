@@ -1,6 +1,6 @@
 import { OPT_SN, OPT_AR } from "./constants";
 
-export const STEP_DEFS = [
+const STEP_DEFS = [
   { title: "Solicitar avaliação de nova ideia de produto", fields: [
     { key: "ideia", label: "Ideia", type: "text" },
     { key: "tipoIdeia", label: "Tipo de ideia", type: "select", options: ["Redução de custo", "Inovação", "Melhoria"] },
@@ -194,4 +194,6 @@ export const STEP_DEFS = [
   ]},
 ];
 
-export default STEP_DEFS;
+export {
+  STEP_DEFS;
+};
