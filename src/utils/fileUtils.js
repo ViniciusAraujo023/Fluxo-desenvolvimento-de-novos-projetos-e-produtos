@@ -24,5 +24,5 @@ function downloadAttachedFile(value) {
 
 export {
   readFileAsDataURL,
-  dowloadAttachedFile,
+  downloadAttachedFile,
 };
