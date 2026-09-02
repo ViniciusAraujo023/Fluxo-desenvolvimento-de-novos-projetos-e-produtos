@@ -32,3 +32,10 @@ const USERS = [
 ];
 
 const isAdminRole = (user) => user?.role === "admin";
+
+
+///
+export {
+  USERS,
+  isAdminRole,
+};
