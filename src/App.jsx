@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 
 import {
-  Plus,
-  User,
-  ShieldCheck,
-  X,
-} from "lucide-react";
+  Header,
+} from "./components/Layout/Header";
 
 import { useProjects } from "./hooks/useProjects";
 import { useCurrentUser } from "./hooks/useCurrentUser";
@@ -47,13 +44,8 @@ import {
 } from "./components/Dashboard/NewProjectForm";
 
 import {
-  SopranoMark,
-} from "./components/Layout/SopranoMark";
-
-import {
   Header,
 } from "./components/Layout/Header";
-
 
 
 ///
@@ -210,7 +202,15 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* cabeçalho */}
+      <Header
+        currentUserId={currentUserId}
+        handleChangeUser={handleChangeUser}
+        setShowNew={setShowNew}
+        projects={projects}
+        isAdmin={isAdmin}
+        emAndamento={emAndamento}
+        concluidos={concluidos}
+      />
 
       {showNew && (
         <NewProjectForm
