@@ -50,6 +50,13 @@ import {
   SopranoMark,
 } from "./components/Layout/SopranoMark";
 
+import {
+  Header,
+} from "./components/Layout/Header";
+
+
+
+///
 function App() {
   const {
     projects,
