@@ -183,17 +183,13 @@ function App() {
     );
   }
 
-  const emAndamento =
-    projects.filter(
-      (p) =>
-        p.status === STATUS.EM_ANDAMENTO
-    ).length;
+  const emAndamento = projects.filter(
+    (p) => p.status === STATUS.EM_ANDAMENTO
+  ).length;
 
-  const concluidos =
-    projects.filter(
-      (p) =>
-        p.status === STATUS.CONCLUIDO
-    ).length;
+  const concluidos = projects.filter(
+    (p) => p.status === STATUS.CONCLUIDO
+  ).length;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -226,7 +222,8 @@ function App() {
           />
         ))}
       </div>
-     );
+    </div>
+  );
 }
 
 export default App;
