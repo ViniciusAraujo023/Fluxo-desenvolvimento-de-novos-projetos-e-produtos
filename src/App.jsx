@@ -202,7 +202,9 @@ function App() {
         emAndamento={emAndamento}
         concluidos={concluidos}
       />
-
+    
+    <div className="px-8 py-8">
+      
       {showNew && (
         <NewProjectForm
           onCreate={handleCreate}
