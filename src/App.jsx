@@ -16,7 +16,6 @@ import {
   insertProjectRow,
   updateProjectRow,
   deleteProjectRow,
-  SUPABASE_READY,
 } from "./services/supabase";
 
 import {
@@ -42,10 +41,6 @@ import {
 import {
   NewProjectForm,
 } from "./components/Dashboard/NewProjectForm";
-
-import {
-  Header,
-} from "./components/Layout/Header";
 
 
 ///
