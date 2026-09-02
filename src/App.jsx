@@ -191,20 +191,19 @@ function App() {
     (p) => p.status === STATUS.CONCLUIDO
   ).length;
 
-  return (
-    <div className="min-h-screen bg-slate-50">
-      <Header
-        currentUserId={currentUserId}
-        handleChangeUser={handleChangeUser}
-        setShowNew={setShowNew}
-        projects={projects}
-        isAdmin={isAdmin}
-        emAndamento={emAndamento}
-        concluidos={concluidos}
-      />
-    
+return (
+  <div className="min-h-screen bg-slate-50">
+    <Header
+      currentUserId={currentUserId}
+      handleChangeUser={handleChangeUser}
+      setShowNew={setShowNew}
+      projects={projects}
+      isAdmin={isAdmin}
+      emAndamento={emAndamento}
+      concluidos={concluidos}
+    />
+
     <div className="px-8 py-8">
-      
       {showNew && (
         <NewProjectForm
           onCreate={handleCreate}
@@ -225,7 +224,10 @@ function App() {
         ))}
       </div>
     </div>
-  );
+  </div>
+);
 }
+
+export default App;
 
 export default App;
