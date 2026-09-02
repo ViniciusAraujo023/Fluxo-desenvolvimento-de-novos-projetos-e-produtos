@@ -195,5 +195,6 @@ const STEP_DEFS = [
 ];
 
 export {
-  STEP_DEFS;
+  STEP_DEFS,
 };
+``
