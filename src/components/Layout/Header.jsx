@@ -1,18 +1,26 @@
-import { Plus, User, ShieldCheck } from "lucide-react";
+import {
+  Plus,
+  User,
+  ShieldCheck,
+} from "lucide-react";
 
-import { SopranoMark } from "./SopranoMark";
+import { USERS } from "../../data/users";
 
+import {
+  SopranoMark,
+} from "./SopranoMark";
+
+
+
+///
 function Header({
   currentUserId,
-  currentUser,
   handleChangeUser,
-  showNew,
   setShowNew,
   projects,
   isAdmin,
   emAndamento,
   concluidos,
-  USERS,
 }) {
   return (
     <header className="border-b border-slate-200 bg-white px-8 py-6">
