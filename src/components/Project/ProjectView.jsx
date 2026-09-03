@@ -54,7 +54,12 @@ import {
   SopranoMark,
 } from "../Layout/SopranoMark";
 
+import {
+  ProcessingOverlay,
+} from "../Layout/ProcessingOverlay";
 
+
+///
 const fieldsFor = (idx, project) => {
   const def = STEP_DEFS[idx];
 
@@ -77,6 +82,7 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
   const TOTAL = STEP_DEFS.length;
   const [viewIndex, setViewIndex] = useState(Math.min(project.currentStep, isAdmin ? TOTAL - 1 : 1));
   const [draft, setDraft] = useState(project.data[viewIndex] || {});
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => { setDraft(project.data[viewIndex] || {}); }, [viewIndex, project.id]);
   useEffect(() => { if (!isAdmin && viewIndex > 1) setViewIndex(1); }, [isAdmin]); // eslint-disable-line
@@ -87,6 +93,9 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
   const ideaApproved = project.currentStep >= 2;
 
   const handleAdvance = () => {
+    if (processing) return;
+      setProcessing(true);
+    try {
     const nextData = { ...project.data, [viewIndex]: draft };
     const isFurthest = viewIndex === project.currentStep;
     const nextCurrent = isFurthest ? Math.min(viewIndex + 1, TOTAL - 1) : project.currentStep;
@@ -102,19 +111,32 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
       patch.emailNotified = true;
       patch.emailMethod = result;
     }
-
     persist(patch);
     if (viewIndex < TOTAL - 1) setViewIndex(viewIndex + 1);
+    } finally {
+    setTimeout(() => {
+      setProcessing(false);
+    }, 3000);
+    }
   };
 
   const handleDecision = (decisao) => {
-    const nextData = { ...project.data, [viewIndex]: { decisao } };
-    if (decisao === "Recusado") {
-      persist({ data: nextData, status: STATUS.RECUSADO });
-    } else {
-      const nextCurrent = Math.min(viewIndex + 1, TOTAL - 1);
-      persist({ data: nextData, currentStep: nextCurrent, status: STATUS.EM_ANDAMENTO });
-      setViewIndex(nextCurrent);
+    if (processing) return;
+      setProcessing(true);
+    
+    try {
+      const nextData = { ...project.data, [viewIndex]: { decisao } };
+        if (decisao === "Recusado") {
+          persist({ data: nextData, status: STATUS.RECUSADO });
+        } else {
+        const nextCurrent = Math.min(viewIndex + 1, TOTAL - 1);
+        persist({ data: nextData, currentStep: nextCurrent, status: STATUS.EM_ANDAMENTO });
+          
+        setViewIndex(nextCurrent);
+    } finally {
+    setTimeout(() => {
+      setProcessing(false);
+    }, 3000);
     }
   };
 
@@ -141,6 +163,16 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
 
   return (
     <div className="flex h-full min-h-screen bg-slate-50">
+      {processing && (
+        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-9999">
+          <div className="bg-white rounded-lg px-6 py-4 shadow-lg flex items-center gap-3">
+            <div className="h-5 w-5 rounded-full border-2 border-slate-300 border-t-sky-800 animate-spin" />
+            <span className="text-slate-700">
+                Processando...
+            </span>
+          </div>
+         </div>
+      )}
       <aside className="w-72 shrink-0 bg-slate-900 text-slate-300 flex flex-col">
         <div className="p-5 border-b border-slate-800">
           <div className="flex items-center gap-2 mb-4">
