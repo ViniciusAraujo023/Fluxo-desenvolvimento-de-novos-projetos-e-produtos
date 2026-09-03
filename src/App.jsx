@@ -42,9 +42,17 @@ import {
   NewProjectForm,
 } from "./components/Dashboard/NewProjectForm";
 
+import {
+  LoadingScreen,
+} from "./components/Layout/LoadingScreen";
+
+
 
 ///
 function App() {
+  
+  const [loading, setLoading] = useState(true);
+  
   const {
     projects,
     setProjects,
@@ -190,6 +198,7 @@ function App() {
   const concluidos = projects.filter(
     (p) => p.status === STATUS.CONCLUIDO
   ).length;
+
 
 return (
   <div className="min-h-screen bg-slate-50">
