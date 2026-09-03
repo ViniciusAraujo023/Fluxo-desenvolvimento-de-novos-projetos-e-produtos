@@ -248,5 +248,6 @@ return (
     )}
   </>
 );
+}
 
 export default App;
