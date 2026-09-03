@@ -129,10 +129,12 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
         if (decisao === "Recusado") {
           persist({ data: nextData, status: STATUS.RECUSADO });
         } else {
-        const nextCurrent = Math.min(viewIndex + 1, TOTAL - 1);
-        persist({ data: nextData, currentStep: nextCurrent, status: STATUS.EM_ANDAMENTO });
+          const nextCurrent = Math.min(viewIndex + 1, TOTAL - 1);
           
-        setViewIndex(nextCurrent);
+          persist({ data: nextData, currentStep: nextCurrent, status: STATUS.EM_ANDAMENTO });
+          
+          setViewIndex(nextCurrent);
+          }
     } finally {
     setTimeout(() => {
       setProcessing(false);
