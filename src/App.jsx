@@ -72,6 +72,13 @@ function App() {
     if (EMAILJS_READY) {
       loadEmailJsScript().catch(() => {});
     }
+
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+
   }, []);
 
   const isAdmin = isAdminRole(currentUser);
@@ -201,40 +208,45 @@ function App() {
 
 
 return (
-  <div className="min-h-screen bg-slate-50">
-    <Header
-      currentUserId={currentUserId}
-      handleChangeUser={handleChangeUser}
-      setShowNew={setShowNew}
-      projects={projects}
-      isAdmin={isAdmin}
-      emAndamento={emAndamento}
-      concluidos={concluidos}
-    />
-
-    <div className="px-8 py-8">
-      {showNew && (
-        <NewProjectForm
-          onCreate={handleCreate}
-          onCancel={() => setShowNew(false)}
-          currentUser={currentUser}
+  <>
+    {loading ? (
+      <LoadingScreen />
+    ) : (
+      <div className="min-h-screen bg-slate-50">
+        <Header
+          currentUserId={currentUserId}
+          handleChangeUser={handleChangeUser}
+          setShowNew={setShowNew}
+          projects={projects}
+          isAdmin={isAdmin}
+          emAndamento={emAndamento}
+          concluidos={concluidos}
         />
-      )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {projects.map((p) => (
-          <ProjectCard
-            key={p.id}
-            project={p}
-            onOpen={() => setSelectedId(p.id)}
-            onReactivate={handleReactivate}
-            isAdmin={isAdmin}
-          />
-        ))}
+        <div className="px-8 py-8">
+          {showNew && (
+            <NewProjectForm
+              onCreate={handleCreate}
+              onCancel={() => setShowNew(false)}
+              currentUser={currentUser}
+            />
+          )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {projects.map((p) => (
+              <ProjectCard
+                key={p.id}
+                project={p}
+                onOpen={() => setSelectedId(p.id)}
+                onReactivate={handleReactivate}
+                isAdmin={isAdmin}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    )}
+  </>
 );
-}
 
 export default App;
