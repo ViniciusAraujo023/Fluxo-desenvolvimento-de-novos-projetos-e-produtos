@@ -5,11 +5,11 @@ import {
 
 import {
   getUser,
+  logout,
 } from "../services/authService";
 
 function useAuth() {
-  const [user, setUser] =
-    useState(null);
+  const [user, setUser] = useState(null);
 
   const [loading, setLoading] =
     useState(true);
@@ -24,9 +24,16 @@ function useAuth() {
       });
   }, []);
 
+  const signOut = async () => {
+    await logout();
+
+    setUser(null);
+  };
+
   return {
     user,
     loading,
+    signOut,
   };
 }
 
