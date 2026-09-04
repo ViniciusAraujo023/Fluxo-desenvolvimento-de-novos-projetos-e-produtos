@@ -41,4 +41,5 @@ export {
   login,
   logout,
   getUser,
+  supabase,
 };
