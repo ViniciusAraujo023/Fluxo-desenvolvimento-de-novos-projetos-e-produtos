@@ -79,4 +79,19 @@ async function approveUser(id) {
   });
 }
 
-export { getUserByEmail, createUser, listUsers, updateUser, approveUser, };
+async function saveUserSettings(
+  id,
+  {
+    perfil,
+    area_id,
+    ativo,
+  }
+) {
+  return updateUser(id, {
+    perfil,
+    area_id,
+    ativo,
+  });
+}
+
+export { getUserByEmail, createUser, listUsers, updateUser, approveUser, saveUserSettings, };
