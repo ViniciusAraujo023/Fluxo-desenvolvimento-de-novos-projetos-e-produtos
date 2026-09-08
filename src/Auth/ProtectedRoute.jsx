@@ -1,5 +1,5 @@
 import { LoginPage } from "./LoginPage";
-
+import { VerifyAccess } from "./VerifyAccess";
 
 function ProtectedRoute({ user, loading, children }) {
   if (loading) {
@@ -14,6 +14,10 @@ function ProtectedRoute({ user, loading, children }) {
     return <LoginPage />;
   }
 
+  if (appUser && !appUser.aprovado) {
+  return <VerifyAccess />;
+  }
+  
   return children;
 }
 
