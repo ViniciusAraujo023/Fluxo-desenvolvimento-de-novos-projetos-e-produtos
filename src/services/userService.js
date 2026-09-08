@@ -39,4 +39,44 @@ async function createUser({
   return data;
 }
 
-export { getUserByEmail, createUser, };
+async function listUsers() {
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .order("created_at", {
+      ascending: false,
+    });
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+async function updateUser(
+  id,
+  updates
+) {
+  const { data, error } =
+    await supabase
+      .from("users")
+      .update(updates)
+      .eq("id", id)
+      .select()
+      .single();
+
+  if (error) {
+    throw error;
+  }
+
+  return data;
+}
+
+async function approveUser(id) {
+  return updateUser(id, {
+    aprovado: true,
+  });
+}
+
+export { getUserByEmail, createUser, listUsers, updateUser, approveUser, };
