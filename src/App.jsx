@@ -1,52 +1,31 @@
 import { useState, useEffect } from "react";
 
-import {
-  Header,
-} from "./components/Layout/Header";
+import { Header, } from "./components/Layout/Header";
 
 import { useProjects } from "./hooks/useProjects";
 import { useCurrentUser } from "./hooks/useCurrentUser";
 
-import {
-  EMAILJS_READY,
-  loadEmailJsScript,
-} from "./services/emailService";
+import { EMAILJS_READY, loadEmailJsScript, } from "./services/emailService";
 
-import {
-  insertProjectRow,
-  updateProjectRow,
-  deleteProjectRow,
-} from "./services/supabase";
+import { insertProjectRow, updateProjectRow, deleteProjectRow, } from "./services/supabase";
 
-import {
-  createProject,
-} from "./services/projectService";
+import { createProject, } from "./services/projectService";
 
-import {
-  STATUS,
-} from "./data/constants";
+import { STATUS, } from "./data/constants";
 
-import {
-  isAdminRole,
-} from "./data/users";
+import { isAdminRole, } from "./data/users";
 
-import {
-  ProjectView,
-} from "./components/Project/ProjectView";
+import { ProjectView, } from "./components/Project/ProjectView";
 
-import {
-  ProjectCard,
-} from "./components/Dashboard/ProjectCard";
+import { ProjectCard, } from "./components/Dashboard/ProjectCard";
 
-import {
-  NewProjectForm,
-} from "./components/Dashboard/NewProjectForm";
+import { NewProjectForm, } from "./components/Dashboard/NewProjectForm";
 
-import {
-  LoadingScreen,
-} from "./components/Layout/LoadingScreen";
+import { LoadingScreen, } from "./components/Layout/LoadingScreen";
 
+import { useAuth } from "./hooks/useAuth";
 
+import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
 
 ///
 function App() {
@@ -208,7 +187,10 @@ function App() {
 
 
 return (
-  <>
+  <ProtectedRoute
+    user={user}
+    loading={authLoading}
+  >
     {loading ? (
       <LoadingScreen />
     ) : (
@@ -246,7 +228,7 @@ return (
         </div>
       </div>
     )}
-  </>
+  </ProtectedRoute>
 );
 }
 
