@@ -1,30 +1,17 @@
 import { useState, useEffect } from "react";
-
 import { Header, } from "./components/Layout/Header";
-
 import { useProjects } from "./hooks/useProjects";
 import { useCurrentUser } from "./hooks/useCurrentUser";
-
 import { EMAILJS_READY, loadEmailJsScript, } from "./services/emailService";
-
 import { insertProjectRow, updateProjectRow, deleteProjectRow, } from "./services/supabase";
-
 import { createProject, } from "./services/projectService";
-
 import { STATUS, } from "./data/constants";
-
 import { isAdminRole, } from "./data/users";
-
 import { ProjectView, } from "./components/Project/ProjectView";
-
 import { ProjectCard, } from "./components/Dashboard/ProjectCard";
-
 import { NewProjectForm, } from "./components/Dashboard/NewProjectForm";
-
 import { LoadingScreen, } from "./components/Layout/LoadingScreen";
-
 import { useAuth } from "./hooks/useAuth";
-
 import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
 
 ///
@@ -32,16 +19,9 @@ function App() {
   
   const [loading, setLoading] = useState(true);
   
-  const {
-    projects,
-    setProjects,
-  } = useProjects();
+  const { projects, setProjects, } = useProjects();
 
-  const {
-    currentUserId,
-    currentUser,
-    changeUser,
-  } = useCurrentUser();
+  const { currentUserId, currentUser, changeUser, } = useCurrentUser();
 
   const [selectedId, setSelectedId] = useState(null);
   const [showNew, setShowNew] = useState(false);
