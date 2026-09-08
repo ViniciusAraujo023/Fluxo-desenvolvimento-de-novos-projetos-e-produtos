@@ -168,7 +168,11 @@ function App() {
 
 
 return (
-  <ProtectedRoute user={user} appUser={appUser} loading={authLoading}>
+  <ProtectedRoute
+    user={user}
+    appUser={appUser}
+    loading={authLoading}
+  >
     {loading ? (
       <LoadingScreen />
     ) : (
