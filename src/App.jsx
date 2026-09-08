@@ -23,6 +23,7 @@ function App() {
 
   const { currentUserId, currentUser, changeUser, } = useCurrentUser();
 
+  const { user, appUser, loading: authLoading, } = useAuth();
   const [selectedId, setSelectedId] = useState(null);
   const [showNew, setShowNew] = useState(false);
   const [syncError, setSyncError] = useState("");
@@ -167,10 +168,7 @@ function App() {
 
 
 return (
-  <ProtectedRoute
-    user={user}
-    loading={authLoading}
-  >
+  <ProtectedRoute user={user} appUser={appUser} loading={authLoading}>
     {loading ? (
       <LoadingScreen />
     ) : (
