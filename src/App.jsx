@@ -184,6 +184,7 @@ return (
           concluidos={concluidos}
           showSettings={showSettings}
           setShowSettings={setShowSettings}
+          appUser={appUser}
         />
 
         {showSettings ? (
