@@ -21,4 +21,4 @@ function ProtectedRoute({ user, loading, children }) {
   return children;
 }
 
-export { ProtectedRoute };
+export { ProtectedRoute, };
