@@ -13,6 +13,7 @@ import { NewProjectForm, } from "./components/Dashboard/NewProjectForm";
 import { LoadingScreen, } from "./components/Layout/LoadingScreen";
 import { useAuth } from "./hooks/useAuth";
 import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
+import { SettingsPage } from "./components/Settings/SettingsPage";
 
 ///
 function App() {
@@ -27,6 +28,7 @@ function App() {
   const [selectedId, setSelectedId] = useState(null);
   const [showNew, setShowNew] = useState(false);
   const [syncError, setSyncError] = useState("");
+  const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
     if (EMAILJS_READY) {
@@ -166,6 +168,7 @@ function App() {
     (p) => p.status === STATUS.CONCLUIDO
   ).length;
 
+  
 
 return (
   <ProtectedRoute
