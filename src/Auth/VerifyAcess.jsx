@@ -7,4 +7,4 @@ function VerifyAccess() {
   );
 }
 
-export { VerifyAccess };
+export { VerifyAccess, };
