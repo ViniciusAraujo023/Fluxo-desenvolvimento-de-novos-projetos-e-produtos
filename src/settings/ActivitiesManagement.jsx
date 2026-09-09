@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { listActivities, createActivity } from "../../services/activityService";
-import { listAreas } from "../../services/areaService";
+import { listActivities, createActivity } from "../services/activityService";
+import { listAreas } from "../services/areaService";
 
 function ActivitiesManagement() {
   const [activities, setActivities] = useState([]);
