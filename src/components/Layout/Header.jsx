@@ -1,26 +1,15 @@
-import {
-  Plus,
-  User,
-  ShieldCheck,
-} from "lucide-react";
-
-import { USERS } from "../../data/users";
-
-import {
-  SopranoMark,
-} from "./SopranoMark";
+import { Plus, ShieldCheck, Settings, } from "lucide-react";
+import { SopranoMark, } from "./SopranoMark";
 
 
-
-///
 function Header({
-  currentUserId,
-  handleChangeUser,
   setShowNew,
   projects,
   isAdmin,
   emAndamento,
   concluidos,
+  showSettings,
+  setShowSettings,
 }) {
   return (
     <header className="border-b border-slate-200 bg-white px-8 py-6">
@@ -36,29 +25,15 @@ function Header({
         </div>
 
         <div className="flex items-center gap-3">
-          <label className="flex items-center gap-2 text-xs text-slate-500">
-            <User size={13} />
-
-            <select
-              value={currentUserId}
-              onChange={(e) =>
-                handleChangeUser(e.target.value)
-              }
-              className="rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500/40"
+          {isAdmin && (
+            <button
+              onClick={() => setShowSettings(!showSettings)}
+              className="inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
             >
-              {USERS.map((u) => (
-                <option
-                  key={u.id}
-                  value={u.id}
-                >
-                  {u.name} —{" "}
-                  {u.role === "admin"
-                    ? "Administrador"
-                    : "Colaborador"}
-                </option>
-              ))}
-            </select>
-          </label>
+              <Settings size={16} />
+              Configurações
+            </button>
+          )}
 
           <button
             onClick={() => setShowNew(true)}
@@ -73,37 +48,25 @@ function Header({
       <div className="mt-6 flex items-center justify-between flex-wrap gap-3">
         <div className="flex gap-6 text-sm">
           <div>
-            <span className="font-semibold text-slate-900">
-              {projects.length}
-            </span>{" "}
-            <span className="text-slate-500">
-              projetos
-            </span>
+            <span className="font-semibold text-slate-900">{projects.length}</span>
+            <span className="text-slate-500"> projetos</span>
           </div>
 
           <div>
-            <span className="font-semibold text-amber-600">
-              {emAndamento}
-            </span>{" "}
-            <span className="text-slate-500">
-              em andamento
-            </span>
+            <span className="font-semibold text-amber-600">{emAndamento}</span>
+            <span className="text-slate-500"> em andamento</span>
           </div>
 
           <div>
-            <span className="font-semibold text-emerald-600">
-              {concluidos}
-            </span>{" "}
-            <span className="text-slate-500">
-              concluídos
-            </span>
+            <span className="font-semibold text-emerald-600">{concluidos}</span>
+            <span className="text-slate-500"> concluídos</span>
           </div>
         </div>
 
         {!isAdmin && (
           <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
             <ShieldCheck size={13} />
-            Modo colaborador: você pode solicitar e acompanhar ideias; a gestão do fluxo é feita por um administrador.
+            Modo colaborador: você pode solicitar e acompanhar ideias.
           </span>
         )}
       </div>
@@ -111,6 +74,4 @@ function Header({
   );
 }
 
-export {
-  Header,
-};
+export { Header, };
