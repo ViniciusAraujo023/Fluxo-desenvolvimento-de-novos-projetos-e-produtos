@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { listAreas, createArea } from "../../services/areaService";
+import { listAreas, createArea } from "../services/areaService";
 
 function AreasManagement() {
   const [areas, setAreas] = useState([]);
