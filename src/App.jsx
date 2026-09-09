@@ -12,7 +12,7 @@ import { ProjectCard, } from "./components/Dashboard/ProjectCard";
 import { NewProjectForm, } from "./components/Dashboard/NewProjectForm";
 import { LoadingScreen, } from "./components/Layout/LoadingScreen";
 import { useAuth } from "./hooks/useAuth";
-import { ProtectedRoute } from "./components/Auth/ProtectedRoute";
+import { ProtectedRoute } from "./Auth/ProtectedRoute";
 import { SettingsPage } from "./components/Settings/SettingsPage";
 
 ///
