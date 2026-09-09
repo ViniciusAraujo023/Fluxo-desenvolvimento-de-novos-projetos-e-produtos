@@ -10,6 +10,7 @@ function Header({
   concluidos,
   showSettings,
   setShowSettings,
+  appUser,
 }) {
   return (
     <header className="border-b border-slate-200 bg-white px-8 py-6">
