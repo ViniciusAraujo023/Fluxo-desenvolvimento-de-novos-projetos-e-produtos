@@ -22,9 +22,9 @@ function App() {
   
   const { projects, setProjects, } = useProjects();
 
-  const { currentUserId, currentUser, changeUser, } = useCurrentUser();
-
   const { user, appUser, loading: authLoading, } = useAuth();
+  const currentUser = appUser;
+  
   const [selectedId, setSelectedId] = useState(null);
   const [showNew, setShowNew] = useState(false);
   const [syncError, setSyncError] = useState("");
@@ -43,11 +43,7 @@ function App() {
 
   }, []);
 
-  const isAdmin = isAdminRole(currentUser);
-
-  const handleChangeUser = (id) => {
-    changeUser(id);
-  };
+  const isAdmin = appUser?.perfil === "admin";
 
   const handleCreate = ({
     name,
@@ -133,10 +129,10 @@ function App() {
     );
   };
 
-  if (
-    projects === null ||
-    currentUserId === null
-  ) {
+    if (
+      projects === null ||
+      authLoading
+    ) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         Carregando...
@@ -181,8 +177,6 @@ return (
     ) : (
       <div className="min-h-screen bg-slate-50">
         <Header
-          currentUserId={currentUserId}
-          handleChangeUser={handleChangeUser}
           setShowNew={setShowNew}
           projects={projects}
           isAdmin={isAdmin}
