@@ -188,29 +188,35 @@ return (
           isAdmin={isAdmin}
           emAndamento={emAndamento}
           concluidos={concluidos}
+          showSettings={showSettings}
+          setShowSettings={setShowSettings}
         />
 
-        <div className="px-8 py-8">
-          {showNew && (
-            <NewProjectForm
-              onCreate={handleCreate}
-              onCancel={() => setShowNew(false)}
-              currentUser={currentUser}
-            />
-          )}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {projects.map((p) => (
-              <ProjectCard
-                key={p.id}
-                project={p}
-                onOpen={() => setSelectedId(p.id)}
-                onReactivate={handleReactivate}
-                isAdmin={isAdmin}
+        {showSettings ? (
+          <SettingsPage />
+        ) : (
+          <div className="px-8 py-8">
+            {showNew && (
+              <NewProjectForm
+                onCreate={handleCreate}
+                onCancel={() => setShowNew(false)}
+                currentUser={currentUser}
               />
-            ))}
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {projects.map((p) => (
+                <ProjectCard
+                  key={p.id}
+                  project={p}
+                  onOpen={() => setSelectedId(p.id)}
+                  onReactivate={handleReactivate}
+                  isAdmin={isAdmin}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     )}
   </ProtectedRoute>
