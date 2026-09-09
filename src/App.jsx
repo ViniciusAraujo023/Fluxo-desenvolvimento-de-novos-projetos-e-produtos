@@ -13,7 +13,7 @@ import { NewProjectForm, } from "./components/Dashboard/NewProjectForm";
 import { LoadingScreen, } from "./components/Layout/LoadingScreen";
 import { useAuth } from "./hooks/useAuth";
 import { ProtectedRoute } from "./Auth/ProtectedRoute";
-import { SettingsPage } from "./components/Settings/SettingsPage";
+import { SettingsPage } from "./components/settings/SettingsPage";
 
 ///
 function App() {
