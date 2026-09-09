@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { listUsers, approveUser, saveUserSettings, } from "./services/userService";
-import { listAreas, } from "../../services/areaService";
+import { listUsers, approveUser, saveUserSettings, } from "../services/userService";
+import { listAreas, } from "../services/areaService";
 
 function UsersManagement() {
   const [users, setUsers] = useState([]);
