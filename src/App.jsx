@@ -49,7 +49,7 @@ function App() {
 
   }, []);
 
-  const isAdmin = appUser?.perfil === "admin";
+  const isAdmin = currentUser?.role === "admin";
 
   const handleCreate = ({
     name,
