@@ -18,15 +18,15 @@ function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSe
             {appUser && (
               <div className="mt-2">
                 <div className="font-medium text-slate-700">
-                  {appUser.nome}
+                  {appUser?.nome || "Usuário"}
                 </div>
 
                 <div>
-                  Perfil: {appUser.perfil}
+                  Perfil: {appUser?.perfil || "-"}
                 </div>
 
                 <div>
-                  {appUser.email}
+                  {appUser?.email || "-"}
                 </div>
               </div>
             )}
