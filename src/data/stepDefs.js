@@ -194,7 +194,4 @@ const STEP_DEFS = [
   ]},
 ];
 
-export {
-  STEP_DEFS,
-};
-``
+export { STEP_DEFS, };
