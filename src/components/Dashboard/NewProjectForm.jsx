@@ -1,8 +1,5 @@
 import { useState } from "react";
-
-import {
-  todayISO,
-} from "../../utils/dateUtils";
+import { todayISO, } from "../../utils/dateUtils";
 
 function NewProjectForm({
   onCreate,
@@ -94,6 +91,4 @@ function NewProjectForm({
   );
 }
 
-export {
-  NewProjectForm,
-};
+export { NewProjectForm, };
