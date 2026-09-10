@@ -21,7 +21,7 @@ function Header({
           <div className="text-xs text-slate-500 border-l border-slate-200 pl-3">
             Fluxo de engenharia
             <br />
-            Novos produtos
+            Novos projetos
           </div>
         </div>
 
@@ -67,7 +67,7 @@ function Header({
         {!isAdmin && (
           <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
             <ShieldCheck size={13} />
-            Modo colaborador: você pode solicitar e acompanhar ideias.
+            Modo visualizador: você pode solicitar e acompanhar ideias.
           </span>
         )}
       </div>
