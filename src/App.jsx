@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { Header, } from "./components/Layout/Header";
 import { useProjects } from "./hooks/useProjects";
-import { useCurrentUser } from "./hooks/useCurrentUser";
 import { EMAILJS_READY, loadEmailJsScript, } from "./services/emailService";
 import { insertProjectRow, updateProjectRow, deleteProjectRow, } from "./services/supabase";
 import { createProject, } from "./services/projectService";
 import { STATUS, } from "./data/constants";
-import { isAdminRole, } from "./data/users";
 import { ProjectView, } from "./components/Project/ProjectView";
 import { ProjectCard, } from "./components/Dashboard/ProjectCard";
 import { NewProjectForm, } from "./components/Dashboard/NewProjectForm";
@@ -23,7 +21,15 @@ function App() {
   const { projects, setProjects, } = useProjects();
 
   const { user, appUser, loading: authLoading, } = useAuth();
-  const currentUser = appUser;
+  const currentUser = appUser
+  ? {
+      id: appUser.id,
+      name: appUser.nome,
+      role: appUser.perfil,
+      email: appUser.email,
+      area: appUser.area_id,
+    }
+  : null;
   
   const [selectedId, setSelectedId] = useState(null);
   const [showNew, setShowNew] = useState(false);
