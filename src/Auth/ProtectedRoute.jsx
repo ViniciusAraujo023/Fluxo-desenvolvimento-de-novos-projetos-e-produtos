@@ -1,7 +1,7 @@
 import { LoginPage } from "./LoginPage";
 import { VerifyAccess } from "./VerifyAccess";
 
-function ProtectedRoute({ user, appUser, loading, children,}) 
+function ProtectedRoute({ user, appUser, loading, children, }) 
 {
   if (loading) {
     return (
