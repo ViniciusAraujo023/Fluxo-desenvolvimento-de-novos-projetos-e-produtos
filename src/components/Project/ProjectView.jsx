@@ -1,68 +1,18 @@
 import { useState, useEffect } from "react";
-
-import {
-  ArrowLeft,
-  Calendar,
-  User,
-  Check,
-  Circle,
-  ChevronLeft,
-  AlertCircle,
-  RotateCcw,
-  ShieldCheck,
-  Mail,
-  Send,
-  Ban,
-  Trash2,
-} from "lucide-react";
-
+import { ArrowLeft, Calendar, User, Check, Circle, ChevronLeft, AlertCircle, RotateCcw, ShieldCheck, Mail, Send, Ban, Trash2, } from "lucide-react";
 import { Field } from "./Field";
-
 import { STEP_DEFS } from "../../data/stepDefs";
+import { PHASES, phaseOf, } from "../../data/phases";
+import { STATUS, } from "../../data/constants";
+import { isAdminRole, } from "../../data/users";
+import { todayISO, fmtDate, } from "../../utils/dateUtils";
+import { isBlockedStatus, statusBadgeClass, } from "../../utils/statusUtils";
+import { notifyNewIdea, buildIdeaMailto, EMAILJS_READY, NOTIFY_EMAIL, } from "../../services/emailService";
+import { SopranoMark, } from "../Layout/SopranoMark";
+import { ProcessingOverlay, } from "../Layout/ProcessingOverlay";
 
-import {
-  PHASES,
-  phaseOf,
-} from "../../data/phases";
-
-import {
-  STATUS,
-} from "../../data/constants";
-
-import {
-  isAdminRole,
-} from "../../data/users";
-
-import {
-  todayISO,
-  fmtDate,
-} from "../../utils/dateUtils";
-
-import {
-  isBlockedStatus,
-  statusBadgeClass,
-} from "../../utils/statusUtils";
-
-import {
-  notifyNewIdea,
-  buildIdeaMailto,
-  EMAILJS_READY,
-  NOTIFY_EMAIL,
-} from "../../services/emailService";
-
-import {
-  SopranoMark,
-} from "../Layout/SopranoMark";
-
-import {
-  ProcessingOverlay,
-} from "../Layout/ProcessingOverlay";
-
-
-///
 const fieldsFor = (idx, project) => {
   const def = STEP_DEFS[idx];
-
   if (!def.branch) {
     return def.fields || [];
   }
@@ -74,8 +24,6 @@ const fieldsFor = (idx, project) => {
 
   return def.fields[tipo];
 };
-
-
 
 function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
   const isAdmin = isAdminRole(currentUser);
@@ -341,7 +289,6 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
     </div>
   );
 }
-
 export {
   ProjectView,
 };
