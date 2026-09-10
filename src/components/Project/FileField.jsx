@@ -1,21 +1,7 @@
-import {
-  useRef, 
-  useState,
-} from "react";
+import { useRef, useState, } from "react";
+import { Paperclip, Download, X, } from "lucide-react";
+import { readFileAsDataURL, downloadAttachedFile, } from "../../utils/fileUtils";
 
-import {
-  Paperclip,
-  Download,
-  X,
-} from "lucide-react";
-
-import {
-  readFileAsDataURL,
-  downloadAttachedFile,
-} from "../../utils/fileUtils";
-
-
-///
 function FileField({ label, value, onChange, disabled }) {
   const inputRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -75,8 +61,6 @@ function FileField({ label, value, onChange, disabled }) {
     </div>
   );
 }
-
-
 export{
   FileField,
 };
