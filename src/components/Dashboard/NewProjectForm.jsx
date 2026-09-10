@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { todayISO, } from "../../utils/dateUtils";
 
-function NewProjectForm({
-  onCreate,
-  onCancel,
-  currentUser,
-}) {
+function NewProjectForm({ onCreate, onCancel, currentUser, }) 
+{
   const [name, setName] = useState("");
 
   const [responsavel, setResponsavel] = useState(
