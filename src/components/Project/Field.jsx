@@ -1,7 +1,6 @@
 import { Download } from "lucide-react";
 import { FileField } from "./FileField";
 
-///
 function Field({ field, value, onChange, disabled }) {
   const { type, label } = field;
 
@@ -89,8 +88,4 @@ function Field({ field, value, onChange, disabled }) {
   return null;
 }
 
-
-///
-export{
-  Field,
-};
+export{ Field, };
