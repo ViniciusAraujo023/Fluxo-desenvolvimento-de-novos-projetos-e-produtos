@@ -29,9 +29,9 @@ function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSe
                   {appUser.email}
                 </div>
               </div>
-             )}
+            )}
           </div>
-
+          </div>
         <div className="flex items-center gap-3">
           {isAdmin && (
             <button
