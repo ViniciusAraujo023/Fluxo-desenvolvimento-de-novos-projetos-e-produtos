@@ -5,6 +5,4 @@ const ROLES = {
   VISUALIZADOR: "visualizador",
 };
 
-export {
-  ROLES,
-};
+export { ROLES, };
