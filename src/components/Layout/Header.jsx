@@ -2,16 +2,8 @@ import { Plus, ShieldCheck, Settings, } from "lucide-react";
 import { SopranoMark, } from "./SopranoMark";
 
 
-function Header({
-  setShowNew,
-  projects,
-  isAdmin,
-  emAndamento,
-  concluidos,
-  showSettings,
-  setShowSettings,
-  appUser,
-}) {
+function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSettings, setShowSettings, appUser,}) 
+{
   return (
     <header className="border-b border-slate-200 bg-white px-8 py-6">
       <div className="flex items-center justify-between gap-4 flex-wrap">
