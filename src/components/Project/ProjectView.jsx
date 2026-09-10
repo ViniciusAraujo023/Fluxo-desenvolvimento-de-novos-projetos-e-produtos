@@ -4,7 +4,6 @@ import { Field } from "./Field";
 import { STEP_DEFS } from "../../data/stepDefs";
 import { PHASES, phaseOf, } from "../../data/phases";
 import { STATUS, } from "../../data/constants";
-import { isAdminRole, } from "../../data/users";
 import { todayISO, fmtDate, } from "../../utils/dateUtils";
 import { isBlockedStatus, statusBadgeClass, } from "../../utils/statusUtils";
 import { notifyNewIdea, buildIdeaMailto, EMAILJS_READY, NOTIFY_EMAIL, } from "../../services/emailService";
@@ -25,91 +24,117 @@ const fieldsFor = (idx, project) => {
   return def.fields[tipo];
 };
 
-function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
-  const isAdmin = isAdminRole(currentUser);
+function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser, }) 
+{
+  const isAdmin = currentUser?.role === "admin";
+
   const TOTAL = STEP_DEFS.length;
-  const [viewIndex, setViewIndex] = useState(Math.min(project.currentStep, isAdmin ? TOTAL - 1 : 1));
-  const [draft, setDraft] = useState(project.data[viewIndex] || {});
-  const [processing, setProcessing] = useState(false);
 
-  useEffect(() => { setDraft(project.data[viewIndex] || {}); }, [viewIndex, project.id]);
-  useEffect(() => { if (!isAdmin && viewIndex > 1) setViewIndex(1); }, [isAdmin]); // eslint-disable-line
+  const [viewIndex, setViewIndex] = useState(
+    Math.min(
+      project.currentStep,
+      isAdmin ? TOTAL - 1 : 1
+    )
+  );
 
-  const setField = (key, val) => setDraft((d) => ({ ...d, [key]: val }));
-  const persist = (patch) => onUpdate({ ...project, ...patch, updatedAt: todayISO() });
-  const blocked = isBlockedStatus(project.status);
-  const ideaApproved = project.currentStep >= 2;
+  const [draft, setDraft] = useState(
+    project.data[viewIndex] || {}
+  );
+
+  const [processing, setProcessing] =
+    useState(false);
+
+  useEffect(() => {
+    setDraft(
+      project.data[viewIndex] || {}
+    );
+  }, [viewIndex, project.id]);
+
+  useEffect(() => {
+    if (!isAdmin && viewIndex > 1) {
+      setViewIndex(1);
+    }
+  }, [isAdmin]);
+
+  const setField = (key, val) =>
+    setDraft((d) => ({
+      ...d,
+      [key]: val,
+    }));
+
+  const persist = (patch) =>
+    onUpdate({
+      ...project,
+      ...patch,
+      updatedAt: todayISO(),
+    });
+
+  const blocked = isBlockedStatus(
+    project.status
+  );
+
+  const ideaApproved =
+    project.currentStep >= 2;
 
   const handleAdvance = () => {
     if (processing) return;
-      setProcessing(true);
+
+    setProcessing(true);
+
     try {
-    const nextData = { ...project.data, [viewIndex]: draft };
-    const isFurthest = viewIndex === project.currentStep;
-    const nextCurrent = isFurthest ? Math.min(viewIndex + 1, TOTAL - 1) : project.currentStep;
-    const finished = isFurthest && viewIndex === TOTAL - 1;
+      const nextData = {
+        ...project.data,
+        [viewIndex]: draft,
+      };
 
-    const patch = { data: nextData };
-    if (isFurthest) {
-      patch.currentStep = nextCurrent;
-      patch.status = finished ? STATUS.CONCLUIDO : STATUS.EM_ANDAMENTO;
-    }
-    if (isFurthest && viewIndex === 0 && !project.emailNotified) {
-      const result = notifyNewIdea({ ...project, data: nextData });
-      patch.emailNotified = true;
-      patch.emailMethod = result;
-    }
-    persist(patch);
-    if (viewIndex < TOTAL - 1) setViewIndex(viewIndex + 1);
+      const isFurthest =
+        viewIndex === project.currentStep;
+
+      const nextCurrent = isFurthest
+        ? Math.min(viewIndex + 1, TOTAL - 1)
+        : project.currentStep;
+
+      const finished =
+        isFurthest &&
+        viewIndex === TOTAL - 1;
+
+      const patch = {
+        data: nextData,
+      };
+
+      if (isFurthest) {
+        patch.currentStep = nextCurrent;
+        patch.status = finished
+          ? STATUS.CONCLUIDO
+          : STATUS.EM_ANDAMENTO;
+      }
+
+      if (
+        isFurthest &&
+        viewIndex === 0 &&
+        !project.emailNotified
+      ) {
+        const result = notifyNewIdea({
+          ...project,
+          data: nextData,
+        });
+
+        patch.emailNotified = true;
+        patch.emailMethod = result;
+      }
+
+      persist(patch);
+
+      if (viewIndex < TOTAL - 1) {
+        setViewIndex(viewIndex + 1);
+      }
     } finally {
-    setTimeout(() => {
-      setProcessing(false);
-    }, 3000);
+      setTimeout(() => {
+        setProcessing(false);
+      }, 3000);
     }
   };
-
-  const handleDecision = (decisao) => {
-    if (processing) return;
-      setProcessing(true);
-    
-    try {
-      const nextData = { ...project.data, [viewIndex]: { decisao } };
-        if (decisao === "Recusado") {
-          persist({ data: nextData, status: STATUS.RECUSADO });
-        } else {
-          const nextCurrent = Math.min(viewIndex + 1, TOTAL - 1);
-          
-          persist({ data: nextData, currentStep: nextCurrent, status: STATUS.EM_ANDAMENTO });
-          
-          setViewIndex(nextCurrent);
-          }
-    } finally {
-    setTimeout(() => {
-      setProcessing(false);
-    }, 3000);
-    }
-  };
-
-  const handleReactivate = () => persist({ status: STATUS.EM_ANDAMENTO });
-
-  const handleCancel = () => {
-    if (confirm(`Cancelar o projeto "${project.name}"? Ele ficará marcado como cancelado, sem perder o histórico, e poderá ser reativado depois caso a ideia volte a ser viável.`)) {
-      persist({ status: STATUS.CANCELADO });
-    }
-  };
-
-  const handleDeleteIdea = () => {
-    if (confirm(`Excluir a ideia "${project.name}"? Como ainda não foi aprovada, ela será removida definitivamente.`)) {
-      onDeleteIdea(project.id);
-      onBack();
-    }
-  };
-
-  const def = STEP_DEFS[viewIndex];
-  const fields = fieldsFor(viewIndex, project);
-  const progressPct = Math.round((project.currentStep / (TOTAL - 1)) * 100);
-  const isReview = viewIndex < project.currentStep;
-  const isLast = viewIndex === TOTAL - 1;
+}
 
   return (
     <div className="flex h-full min-h-screen bg-slate-50">
