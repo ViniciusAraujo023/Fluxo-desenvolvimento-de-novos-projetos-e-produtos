@@ -35,7 +35,4 @@ const isAdminRole = (user) => user?.role === "admin";
 
 
 ///
-export {
-  USERS,
-  isAdminRole,
-};
+export { USERS, isAdminRole, };
