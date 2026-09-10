@@ -289,4 +289,5 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser }) {
     </div>
   );
 }
+
 export { ProjectView, };
