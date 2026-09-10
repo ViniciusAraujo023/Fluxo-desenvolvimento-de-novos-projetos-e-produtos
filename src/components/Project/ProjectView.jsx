@@ -134,9 +134,7 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser, })
       }, 3000);
     }
   };
-}
 
-{
   return (
     <div className="flex h-full min-h-screen bg-slate-50">
       {processing && (
