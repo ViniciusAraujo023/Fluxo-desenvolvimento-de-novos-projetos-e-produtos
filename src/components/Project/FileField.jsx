@@ -61,6 +61,4 @@ function FileField({ label, value, onChange, disabled }) {
     </div>
   );
 }
-export{
-  FileField,
-};
+export{ FileField, };
