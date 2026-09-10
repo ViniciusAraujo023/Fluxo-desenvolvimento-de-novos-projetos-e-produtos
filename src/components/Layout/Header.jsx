@@ -14,8 +14,23 @@ function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSe
             Fluxo de engenharia
             <br />
             Novos projetos
+
+            {appUser && (
+              <div className="mt-2">
+                <div className="font-medium text-slate-700">
+                  {appUser.nome}
+                </div>
+
+                <div>
+                  Perfil: {appUser.perfil}
+                </div>
+
+                <div>
+                  {appUser.email}
+                </div>
+              </div>
+             )}
           </div>
-        </div>
 
         <div className="flex items-center gap-3">
           {isAdmin && (
