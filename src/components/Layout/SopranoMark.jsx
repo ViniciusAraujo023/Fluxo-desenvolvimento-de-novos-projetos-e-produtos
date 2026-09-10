@@ -12,6 +12,4 @@ function SopranoMark({ size = "md", onDark = false }) {
   );
 }
 
-export{
-  SopranoMark,
-};
+export{ SopranoMark, };
