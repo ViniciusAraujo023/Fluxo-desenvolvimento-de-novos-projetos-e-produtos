@@ -63,7 +63,4 @@ function LoginPage() {
   );
 }
 
-export {
-  LoginPage,
-};
-
+export { LoginPage, };
