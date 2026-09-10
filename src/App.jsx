@@ -150,7 +150,7 @@ function App() {
     (p) => p.id === selectedId
   );
 
-  if (selected) {
+  if (selected && currentUser) {
     return (
       <ProjectView
         project={selected}
