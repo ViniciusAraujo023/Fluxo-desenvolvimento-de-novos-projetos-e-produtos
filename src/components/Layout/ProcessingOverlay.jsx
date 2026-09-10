@@ -8,6 +8,4 @@ function ProcessingOverlay() {
   );
 }
 
-export {
-  ProcessingOverlay,
-};
+export { ProcessingOverlay, };
