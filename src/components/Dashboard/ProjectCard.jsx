@@ -1,46 +1,18 @@
-import {
-  Calendar,
-  User,
-  RotateCcw,
-} from "lucide-react";
+import { Calendar, User, RotateCcw, } from "lucide-react";
+import { fmtDate, } from "../../utils/dateUtils";
+import { statusBadgeClass, progressBarClass, isBlockedStatus, } from "../../utils/statusUtils";
+import { phaseOf, } from "../../data/phases";
+import { STEP_DEFS, } from "../../data/stepDefs";
 
-import {
-  fmtDate,
-} from "../../utils/dateUtils";
-
-import {
-  statusBadgeClass,
-  progressBarClass,
-  isBlockedStatus,
-} from "../../utils/statusUtils";
-
-import {
-  phaseOf,
-} from "../../data/phases";
-
-import {
-  STEP_DEFS,
-} from "../../data/stepDefs";
-
-function ProjectCard({
-  project,
-  onOpen,
-  onReactivate,
-  isAdmin,
-}) {
+function ProjectCard({ project, onOpen, onReactivate, isAdmin, }) 
+{
   const TOTAL = STEP_DEFS.length;
 
-  const pct = Math.round(
-    (project.currentStep / (TOTAL - 1)) * 100
-  );
+  const pct = Math.round((project.currentStep / (TOTAL - 1)) * 100);
 
-  const phase = phaseOf(
-    Math.min(project.currentStep, TOTAL - 1)
-  );
+  const phase = phaseOf(Math.min(project.currentStep, TOTAL - 1));
 
-  const blocked = isBlockedStatus(
-    project.status
-  );
+  const blocked = isBlockedStatus(project.status);
 
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5 hover:border-sky-300 hover:shadow-sm transition-all flex flex-col gap-3">
@@ -117,7 +89,6 @@ function ProjectCard({
     </div>
   );
 }
-
 export {
   ProjectCard,
 };
