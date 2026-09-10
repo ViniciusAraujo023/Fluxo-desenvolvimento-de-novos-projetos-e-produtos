@@ -17,7 +17,4 @@ const phaseOf = (idx) =>
 
 
 ///
-export {
-  PHASES,
-  phaseOf,
-};
+export { PHASES, phaseOf, };
