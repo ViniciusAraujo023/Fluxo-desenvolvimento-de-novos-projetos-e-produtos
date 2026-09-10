@@ -15,6 +15,4 @@ const phaseOf = (idx) =>
       idx <= p.range[1]
 );
 
-
-///
 export { PHASES, phaseOf, };
