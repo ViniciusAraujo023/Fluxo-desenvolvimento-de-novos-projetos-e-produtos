@@ -76,6 +76,18 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser, })
   const ideaApproved =
     project.currentStep >= 2;
 
+  const def = STEP_DEFS[viewIndex];
+
+  const fields = fieldsFor(viewIndex, project);
+
+  const isLast = viewIndex === TOTAL - 1;
+
+  const isReview = viewIndex < project.currentStep;
+
+  const progressPct = Math.round(
+    (project.currentStep / (TOTAL - 1)) * 100
+  );
+
   const handleAdvance = () => {
     if (processing) return;
 
@@ -135,18 +147,57 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser, })
     }
   };
 
+  const handleReactivate = () => {
+    persist({
+      status: STATUS.EM_ANDAMENTO,
+    });
+  };
+
+  const handleDecision = (decision) => {
+    const nextData = {
+      ...project.data,
+      [viewIndex]: {
+        ...draft,
+        decisao: decision,
+      },
+    };
+
+    setDraft(nextData[viewIndex]);
+
+    if (decision === "Recusado") {
+      persist({
+        data: nextData,
+        status: STATUS.RECUSADO,
+      });
+      return;
+    }
+
+    const isFurthest = viewIndex === project.currentStep;
+
+    const nextCurrent = isFurthest
+      ? Math.min(viewIndex + 1, TOTAL - 1)
+      : project.currentStep;
+
+    persist({
+      data: nextData,
+      currentStep: nextCurrent,
+      status: STATUS.EM_ANDAMENTO,
+    });
+
+    if (viewIndex < TOTAL - 1) {
+      setViewIndex(viewIndex + 1);
+    }
+  };
+
+  const handleCancel = () => {
+    persist({
+      status: STATUS.CANCELADO,
+    });
+  };
+
   return (
     <div className="flex h-full min-h-screen bg-slate-50">
-      {processing && (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center z-9999">
-          <div className="bg-white rounded-lg px-6 py-4 shadow-lg flex items-center gap-3">
-            <div className="h-5 w-5 rounded-full border-2 border-slate-300 border-t-sky-800 animate-spin" />
-            <span className="text-slate-700">
-                Processando...
-            </span>
-          </div>
-         </div>
-      )}
+      {processing && <ProcessingOverlay />}
       <aside className="w-72 shrink-0 bg-slate-900 text-slate-300 flex flex-col">
         <div className="p-5 border-b border-slate-800">
           <div className="flex items-center gap-2 mb-4">
@@ -303,7 +354,7 @@ function ProjectView({ project, onUpdate, onBack, onDeleteIdea, currentUser, })
                 <Ban size={13} /> Cancelar projeto
               </button>
             ) : (
-              <button onClick={handleDeleteIdea} className="mt-8 inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-rose-600">
+              <button onClick={() => onDeleteIdea(project.id)} className="mt-8 inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-rose-600">
                 <Trash2 size={13} /> Excluir ideia
               </button>
             )
