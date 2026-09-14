@@ -1,8 +1,8 @@
 import { Calendar, User, RotateCcw, } from "lucide-react";
-import { fmtDate, } from "../../utils/dateUtils";
-import { statusBadgeClass, progressBarClass, isBlockedStatus, } from "../../utils/statusUtils";
-import { phaseOf, } from "../../data/phases";
-import { STEP_DEFS, } from "../../data/stepDefs";
+import { fmtDate, } from "./utils/dateUtils";
+import { statusBadgeClass, progressBarClass, isBlockedStatus, } from "./utils/statusUtils";
+import { phaseOf, } from "./data/phases";
+import { STEP_DEFS, } from "./data/stepDefs";
 
 function ProjectCard({ project, onOpen, onReactivate, isAdmin, }) 
 {
