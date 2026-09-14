@@ -101,4 +101,4 @@ function notifyNewIdea(project) {
   return "mailto";
 }
 
-export { EMAILJS_READY, NOTIFY_EMAIL, loadEmailJsScript, emailParams, buildIdeaMailto, };
+export { EMAILJS_READY, NOTIFY_EMAIL, loadEmailJsScript, notifyNewIdea, buildIdeaMailto, };
