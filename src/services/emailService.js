@@ -12,10 +12,8 @@ const EMAILJS_READY = Boolean(
   EMAILJS_PUBLIC_KEY
 );
 
-///
 const NOTIFY_EMAIL = "danielscotti@soprano.com.br";
 
-///
 function loadEmailJsScript() {
   return new Promise((resolve, reject) => {
     if (window.emailjs) return resolve(window.emailjs);
@@ -79,9 +77,6 @@ function buildIdeaMailto(project) {
   return `mailto:${NOTIFY_EMAIL}?subject=${encodeURIComponent(p.subject)}&body=${encodeURIComponent(body)}`;
 }
 
-// Precisa ser chamada de forma SÍNCRONA dentro de um onClick — se rodar
-// depois, num useEffect/Promise, o navegador não reconhece mais como
-// gesto do usuário e bloqueia a abertura do cliente de e-mail.
 function openMailClient(mailtoUrl) {
   const link = document.createElement("a");
   link.href = mailtoUrl;
@@ -91,11 +86,6 @@ function openMailClient(mailtoUrl) {
   link.remove();
 }
 
-/**
- * Dispara a notificação da nova ideia.
- * Retorna "sent" (enviado de verdade via EmailJS) ou "mailto" (abriu o
- * cliente de e-mail como alternativa, quando o EmailJS não está configurado).
- */
 function notifyNewIdea(project) {
   if (EMAILJS_READY && window.emailjs) {
     window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, emailParams(project)).catch((err) => {
@@ -111,12 +101,4 @@ function notifyNewIdea(project) {
   return "mailto";
 }
 
-export {
-  EMAILJS_READY,
-  NOTIFY_EMAIL,
-  loadEmailJsScript,
-  emailParams,
-  buildIdeaMailto,
-  openMailClient,
-  notifyNewIdea,
-};
+export { EMAILJS_READY, NOTIFY_EMAIL, loadEmailJsScript, emailParams, buildIdeaMailto, };
