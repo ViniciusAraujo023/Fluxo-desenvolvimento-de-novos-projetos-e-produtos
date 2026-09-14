@@ -131,13 +131,4 @@ async function saveCurrentUserId(id) {
 }
 
 
-///
-export {
-  SUPABASE_READY,
-  loadProjects,
-  insertProjectRow,
-  updateProjectRow,
-  deleteProjectRow,
-  loadCurrentUserId,
-  saveCurrentUserId,
-};
+export { loadProjects, insertProjectRow, updateProjectRow, deleteProjectRow, };
