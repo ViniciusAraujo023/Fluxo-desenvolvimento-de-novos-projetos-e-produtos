@@ -30,10 +30,4 @@ const progressBarClass = (status) => {
   return "bg-sky-800";
 };
 
-
-///
-export {
-  isBlockedStatus,
-  statusBadgeClass,
-  progressBarClass,
-};
+export { isBlockedStatus, statusBadgeClass, progressBarClass, };
