@@ -13,7 +13,6 @@ import { useAuth } from "./hooks/useAuth";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { SettingsPage } from "./settings/SettingsPage";
 
-///
 function App() {
   
   const [loading, setLoading] = useState(true);
