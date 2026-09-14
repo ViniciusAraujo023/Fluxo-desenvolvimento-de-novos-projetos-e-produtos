@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft, Calendar, User, Check, Circle, ChevronLeft, AlertCircle, RotateCcw, ShieldCheck, Mail, Send, Ban, Trash2, } from "lucide-react";
 import { Field } from "./Field";
-import { STEP_DEFS, } from "./data/stepDefs";
+import { STEP_DEFS, } from "../data/stepDefs";
 import { PHASES, phaseOf, } from "./data/phases";
 import { STATUS, } from "./data/constants";
 import { todayISO, fmtDate, } from "./utils/dateUtils";
