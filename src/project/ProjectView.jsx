@@ -3,12 +3,12 @@ import { ArrowLeft, Calendar, User, Check, Circle, ChevronLeft, AlertCircle, Rot
 import { Field } from "./Field";
 import { STEP_DEFS, } from "../data/stepDefs";
 import { PHASES, phaseOf, } from "./data/phases";
-import { STATUS, } from "./data/constants";
-import { todayISO, fmtDate, } from "./utils/dateUtils";
-import { isBlockedStatus, statusBadgeClass, } from "./utils/statusUtils";
-import { notifyNewIdea, buildIdeaMailto, EMAILJS_READY, NOTIFY_EMAIL, } from "./services/emailService";
-import { SopranoMark, } from "./components/Layout/SopranoMark";
-import { ProcessingOverlay, } from "./components/Layout/ProcessingOverlay";
+import { STATUS, } from "../data/constants";
+import { todayISO, fmtDate, } from "../utils/dateUtils";
+import { isBlockedStatus, statusBadgeClass, } from "../utils/statusUtils";
+import { notifyNewIdea, buildIdeaMailto, EMAILJS_READY, NOTIFY_EMAIL, } from "../services/emailService";
+import { SopranoMark, } from "../components/Layout/SopranoMark";
+import { ProcessingOverlay, } from "../components/Layout/ProcessingOverlay";
 
 const fieldsFor = (idx, project) => {
   const def = STEP_DEFS[idx];
