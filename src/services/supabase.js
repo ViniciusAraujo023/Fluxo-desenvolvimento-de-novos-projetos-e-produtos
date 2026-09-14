@@ -8,7 +8,6 @@ const SUPABASE_READY = Boolean(
   SUPABASE_URL && SUPABASE_ANON_KEY
 );
 
-///
 async function supaRequest(path, options = {}) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
     ...options,
@@ -29,7 +28,6 @@ async function supaRequest(path, options = {}) {
   return text ? JSON.parse(text) : null;
 }
 
-///
 function rowToProject(row) {
   return {
     id: row.id,
@@ -64,7 +62,6 @@ function projectToRow(project) {
   };
 }
 
-///
 async function loadProjects() {
   if (!SUPABASE_READY) return [];
   try {
@@ -106,7 +103,6 @@ async function deleteProjectRow(id) {
   }
 }
 
-///
 async function loadCurrentUserId() {
   if (!SUPABASE_READY) return USERS[0].id;
   try {
