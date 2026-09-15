@@ -1,26 +1,19 @@
-import {
-  ROLES,
-} from "../data/roles";
+import { ROLES, } from "../data/roles";
 
 function isAdmin(user) {
-  return user?.perfil === ROLES.ADMIN;
+  return user?.role === ROLES.ADMIN;
 }
 
 function isGestor(user) {
-  return user?.perfil === ROLES.GESTOR;
+  return user?.role === ROLES.GESTOR;
 }
 
 function isColaborador(user) {
-  return user?.perfil === ROLES.COLABORADOR;
+  return user?.role === ROLES.COLABORADOR;
 }
 
 function isVisualizador(user) {
-  return user?.perfil === ROLES.VISUALIZADOR;
+  return user?.role === ROLES.VISUALIZADOR;
 }
 
-export {
-  isAdmin,
-  isGestor,
-  isColaborador,
-  isVisualizador,
-};
+export { isAdmin, isGestor, isColaborador, isVisualizador, };
