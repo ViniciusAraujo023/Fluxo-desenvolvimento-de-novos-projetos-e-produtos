@@ -22,7 +22,4 @@ function downloadAttachedFile(value) {
   a.remove();
 }
 
-export {
-  readFileAsDataURL,
-  downloadAttachedFile,
-};
+export { readFileAsDataURL, downloadAttachedFile, };
