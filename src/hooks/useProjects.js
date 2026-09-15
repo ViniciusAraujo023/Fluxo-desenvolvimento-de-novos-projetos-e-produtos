@@ -13,8 +13,5 @@ export function useProjects() {
     );
   }, []);
 
-  return {
-    projects,
-    setProjects,
-  };
+  return { projects, setProjects, };
 }
