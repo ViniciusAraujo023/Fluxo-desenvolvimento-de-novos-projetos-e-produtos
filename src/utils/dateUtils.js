@@ -9,7 +9,4 @@ const fmtDate = (iso) => {
   return `${d}/${m}/${y}`;
 };
 
-export {
-  todayISO,
-  fmtDate,
-};
+export { todayISO, fmtDate, };
