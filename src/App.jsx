@@ -12,6 +12,7 @@ import { LoadingScreen, } from "./components/Layout/LoadingScreen";
 import { useAuth } from "./hooks/useAuth";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { SettingsPage } from "./settings/SettingsPage";
+import { canCreateProjects } from "./auth/permissions";
 
 function App() {
   
