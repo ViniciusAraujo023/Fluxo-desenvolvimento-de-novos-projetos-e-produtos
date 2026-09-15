@@ -89,6 +89,4 @@ function ProjectCard({ project, onOpen, onReactivate, isAdmin, })
     </div>
   );
 }
-export {
-  ProjectCard,
-};
+export { ProjectCard, };
