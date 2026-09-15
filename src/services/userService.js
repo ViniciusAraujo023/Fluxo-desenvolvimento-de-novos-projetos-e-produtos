@@ -1,6 +1,5 @@
 import { supabase } from "./authService";
 
-
 async function getUserByEmail(email) {
   const { data, error } = await supabase
     .from("users")
@@ -79,6 +78,12 @@ async function approveUser(id) {
   });
 }
 
+async function removeUser(id) {
+  return updateUser(id, {
+    ativo: false,
+  });
+}
+
 async function saveUserSettings(
   id,
   {
@@ -94,4 +99,4 @@ async function saveUserSettings(
   });
 }
 
-export { getUserByEmail, createUser, listUsers, updateUser, approveUser, saveUserSettings, };
+export { getUserByEmail, createUser, listUsers, updateUser, approveUser, removeUser, saveUserSettings, };
