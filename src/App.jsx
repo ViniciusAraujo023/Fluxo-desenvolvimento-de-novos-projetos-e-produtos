@@ -20,7 +20,7 @@ function App() {
   
   const { projects, setProjects, } = useProjects();
 
-  const { user, appUser, loading: authLoading, } = useAuth();
+  const { user, appUser, loading: authLoading, setAppUser, } = useAuth();
   const currentUser = appUser
   ? {
       id: appUser.id,
@@ -30,6 +30,8 @@ function App() {
       area: appUser.area_id,
     }
   : null;
+
+  const canCreate = canCreateProjects(currentUser);
   
   const [selectedId, setSelectedId] = useState(null);
   const [showNew, setShowNew] = useState(false);
