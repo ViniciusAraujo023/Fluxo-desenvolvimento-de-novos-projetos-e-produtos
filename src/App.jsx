@@ -179,6 +179,7 @@ return (
     user={user}
     appUser={appUser}
     loading={authLoading}
+    onProfileComplete={setAppUser}
   >
     {loading ? (
       <LoadingScreen />
@@ -188,6 +189,7 @@ return (
           setShowNew={setShowNew}
           projects={projects}
           isAdmin={isAdmin}
+          canCreate={canCreate}
           emAndamento={emAndamento}
           concluidos={concluidos}
           showSettings={showSettings}
