@@ -2,7 +2,7 @@ import { Plus, ShieldCheck, Settings, } from "lucide-react";
 import { SopranoMark, } from "./SopranoMark";
 
 
-function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSettings, setShowSettings, appUser,}) 
+function Header({ setShowNew, projects, isAdmin, canCreate, emAndamento, concluidos, showSettings, setShowSettings, appUser,})
 {
   return (
     <header className="border-b border-slate-200 bg-white px-8 py-6">
@@ -43,13 +43,15 @@ function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSe
             </button>
           )}
 
-          <button
-            onClick={() => setShowNew(true)}
-            className="inline-flex items-center gap-1.5 rounded-md bg-sky-800 px-4 py-2.5 text-sm font-medium text-white hover:bg-sky-900"
-          >
-            <Plus size={16} />
-            Solicitar ideia
-          </button>
+          {canCreate && (
+            <button
+              onClick={() => setShowNew(true)}
+              className="inline-flex items-center gap-1.5 rounded-md bg-sky-800 px-4 py-2.5 text-sm font-medium text-white hover:bg-sky-900"
+            >
+              <Plus size={16} />
+              Solicitar ideia
+            </button>
+          )}
         </div>
       </div>
 
@@ -71,10 +73,10 @@ function Header({ setShowNew, projects, isAdmin, emAndamento, concluidos, showSe
           </div>
         </div>
 
-        {!isAdmin && (
+        {appUser?.perfil === "visualizador" && (
           <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
             <ShieldCheck size={13} />
-            Modo visualizador: você pode solicitar e acompanhar ideias.
+            Modo visualizador: você só pode consultar os projetos.
           </span>
         )}
       </div>
