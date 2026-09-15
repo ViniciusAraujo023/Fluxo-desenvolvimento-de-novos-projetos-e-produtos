@@ -42,9 +42,4 @@ async function getUser() {
   return data.user;
 }
 
-export {
-  login,
-  logout,
-  getUser,
-  supabase,
-};
+export { login, logout, getUser, supabase, };
