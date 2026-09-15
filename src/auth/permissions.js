@@ -1,7 +1,4 @@
-import {
-  isAdmin,
-  isGestor,
-} from "./roleUtils";
+import { isAdmin, isGestor, } from "./roleUtils";
 
 function canApprove(user) {
   return (
@@ -29,10 +26,4 @@ function canCreateProjects(user) {
   );
 }
 
-export {
-  canApprove,
-  canManageUsers,
-  canManageAreas,
-  canManageActivities,
-  canCreateProjects,
-};
+export { canApprove, canManageUsers, canManageAreas, canManageActivities, canCreateProjects, };
