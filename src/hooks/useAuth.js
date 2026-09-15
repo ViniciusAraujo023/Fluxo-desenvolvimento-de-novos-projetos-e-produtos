@@ -1,9 +1,6 @@
 import { useEffect, useState, } from "react";
-
 import { getUser, logout, } from "../services/authService";
-
 import { getUserByEmail, createUser, } from "../services/userService";
-
 
 function useAuth() {
   const [user, setUser] = useState(null);
@@ -56,7 +53,7 @@ function useAuth() {
     setAppUser(null);
   };
 
-  return { user, appUser, loading, signOut, };
+  return { user, appUser, loading, signOut, setAppUser, };
 }
 
 export { useAuth, };
