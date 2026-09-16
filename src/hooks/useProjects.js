@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-
-import {
-  loadProjects,
-} from "../services/supabase";
+import { loadProjects, } from "../services/supabase";
 
 export function useProjects() {
   const [projects, setProjects] = useState(null);
