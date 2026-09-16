@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Users, MapPin, ListChecks } from "lucide-react";
 import { UsersManagement } from "./UsersManagement";
 import { AreasManagement } from "./AreasManagement";
-import { ActivitiesManagement } from "./ActivitiesManagement";
+import { StepAreasManagement } from "./StepAreasManagement";
 
 const TABS = [
   { id: "users", label: "Usuários", icon: Users },
   { id: "areas", label: "Áreas", icon: MapPin },
-  { id: "activities", label: "Atividades", icon: ListChecks },
+  { id: "steps", label: "Etapas por área", icon: ListChecks },
 ];
 
 function SettingsPage() {
@@ -19,7 +19,7 @@ function SettingsPage() {
         Configurações
       </h1>
       <p className="text-sm text-slate-500 mt-1">
-        Gerencie usuários, áreas e atividades do fluxo.
+        Gerencie usuários, áreas e quem é responsável por cada etapa do fluxo.
       </p>
 
       <div className="mt-6 border-b border-slate-200 flex gap-6">
@@ -42,7 +42,7 @@ function SettingsPage() {
       <div className="mt-6">
         {tab === "users" && <UsersManagement />}
         {tab === "areas" && <AreasManagement />}
-        {tab === "activities" && <ActivitiesManagement />}
+        {tab === "steps" && <StepAreasManagement />}
       </div>
     </div>
   );
