@@ -1,6 +1,6 @@
 import { useRef, useState, } from "react";
 import { Paperclip, Download, X, } from "lucide-react";
-import { readFileAsDataURL, downloadAttachedFile, } from "../utils/fileUtils";
+import { readFileAsDataURL, downloadAttachedFile, } from "../utils/FileUtils";
 
 function FileField({ label, value, onChange, disabled }) {
   const inputRef = useRef(null);
