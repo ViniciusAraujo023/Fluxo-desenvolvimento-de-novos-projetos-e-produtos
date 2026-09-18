@@ -1,4 +1,4 @@
-import { supabase } from "./authService";
+import { supabase } from "./AuthService";
 
 async function getUserByEmail(email) {
   const { data, error } = await supabase
