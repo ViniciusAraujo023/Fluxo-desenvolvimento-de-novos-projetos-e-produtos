@@ -1,4 +1,4 @@
-import { isAdmin, isGestor, isColaborador, isVisualizador } from "./roleUtils";
+import { isAdmin, isGestor, isColaborador, isVisualizador } from "./RoleUtils";
 
 function canApprove(user) {
   return (
