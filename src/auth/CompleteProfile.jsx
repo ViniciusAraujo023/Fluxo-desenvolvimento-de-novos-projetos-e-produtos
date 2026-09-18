@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateUser } from "../services/userService";
+import { updateUser } from "../services/UserService";
 
 function CompleteProfile({ appUser, onDone }) {
   const [nome, setNome] = useState("");
