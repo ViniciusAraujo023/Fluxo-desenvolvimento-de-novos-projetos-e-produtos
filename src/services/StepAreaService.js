@@ -1,4 +1,4 @@
-import { supabase } from "./authService";
+import { supabase } from "./AuthService";
 
 async function listStepAreas() {
   const { data, error } = await supabase
