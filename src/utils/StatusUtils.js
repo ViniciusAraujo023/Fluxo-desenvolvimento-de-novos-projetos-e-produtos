@@ -1,4 +1,4 @@
-import { STATUS } from "../data/constants";
+import { STATUS } from "../data/Constants";
 
 const isBlockedStatus = (status) => 
   status === STATUS.RECUSADO || 
