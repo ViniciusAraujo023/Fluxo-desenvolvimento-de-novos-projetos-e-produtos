@@ -1,4 +1,4 @@
-import { ROLES, } from "../data/roles";
+import { ROLES, } from "../data/Roles";
 
 function isAdmin(user) {
   return user?.role === ROLES.ADMIN;
