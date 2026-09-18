@@ -1,4 +1,4 @@
-import { supabase } from "./authService";
+import { supabase } from "./AuthService";
 
 async function listAreas() {
   const { data, error } = await supabase
