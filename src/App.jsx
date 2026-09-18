@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { Header, } from "./components/Layout/Header";
-import { useProjects } from "./hooks/useProjects";
-import { EMAILJS_READY, loadEmailJsScript, } from "./services/emailService";
-import { insertProjectRow, updateProjectRow, deleteProjectRow, } from "./services/supabase";
-import { createProject, } from "./utils/projectService";
-import { STATUS, } from "./data/constants";
+import { useProjects } from "./hooks/UseProjects";
+import { EMAILJS_READY, loadEmailJsScript, } from "./services/EmailService";
+import { insertProjectRow, updateProjectRow, deleteProjectRow, } from "./services/Supabase";
+import { createProject, } from "./utils/ProjectService";
+import { STATUS, } from "./data/Constants";
 import { ProjectView, } from "./project/ProjectView";
 import { ProjectCard, } from "./dashboard/ProjectCard";
 import { NewProjectForm, } from "./dashboard/NewProjectForm";
 import { LoadingScreen, } from "./components/Layout/LoadingScreen";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "./hooks/UseAuth";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
 import { SettingsPage } from "./settings/SettingsPage";
-import { canCreateProjects } from "./auth/permissions";
+import { canCreateProjects } from "./auth/Permissions";
 
 function App() {
   
