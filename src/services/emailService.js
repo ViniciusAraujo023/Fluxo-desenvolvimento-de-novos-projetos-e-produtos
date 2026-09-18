@@ -1,4 +1,4 @@
-import { fmtDate } from "../utils/dateUtils";
+import { fmtDate } from "../utils/DateUtils";
 
 const EMAILJS_SERVICE_ID = "";
 
