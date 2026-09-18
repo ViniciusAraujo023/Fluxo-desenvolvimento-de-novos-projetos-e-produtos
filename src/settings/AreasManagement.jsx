@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Plus, MapPin } from "lucide-react";
-import { listAreas, createArea } from "../services/areaService";
+import { listAreas, createArea } from "../services/AreaService";
 
 function AreasManagement() {
   const [areas, setAreas] = useState([]);
