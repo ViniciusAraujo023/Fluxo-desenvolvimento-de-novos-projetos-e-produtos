@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Check, Clock } from "lucide-react";
-import { listUsers, approveUser, saveUserSettings, } from "../services/userService";
-import { listAreas, } from "../services/areaService";
+import { listUsers, approveUser, saveUserSettings, } from "../services/UserService";
+import { listAreas, } from "../services/AreaService";
 
 const PERFIL_LABEL = {
   admin: "Administrador",
