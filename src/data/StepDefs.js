@@ -1,4 +1,4 @@
-import { OPT_SN, OPT_AR } from "./constants";
+import { OPT_SN, OPT_AR } from "./Constants";
 
 const STEP_DEFS = [
   { title: "Solicitar avaliação de nova ideia de produto", fields: [
