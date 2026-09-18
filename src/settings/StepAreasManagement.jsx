@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
-import { STEP_DEFS } from "../data/stepDefs";
-import { listAreas } from "../services/areaService";
-import { listStepAreas, saveStepArea } from "../services/stepAreaService";
+import { STEP_DEFS } from "../data/StepDefs";
+import { listAreas } from "../services/AreaService";
+import { listStepAreas, saveStepArea } from "../services/StepAreaService";
 
 function StepAreasManagement() {
   const [areas, setAreas] = useState([]);
