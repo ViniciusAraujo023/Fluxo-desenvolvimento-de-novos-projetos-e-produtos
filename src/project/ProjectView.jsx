@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { ArrowLeft, Calendar, User, Check, Circle, ChevronLeft, AlertCircle, RotateCcw, ShieldCheck, Mail, Send, Ban, Trash2, } from "lucide-react";
 import { Field } from "./Field";
-import { STEP_DEFS, } from "../data/stepDefs";
-import { PHASES, phaseOf, } from "../data/phases";
-import { STATUS, } from "../data/constants";
-import { todayISO, fmtDate, } from "../utils/dateUtils";
-import { isBlockedStatus, statusBadgeClass, } from "../utils/statusUtils";
-import { notifyNewIdea, buildIdeaMailto, EMAILJS_READY, NOTIFY_EMAIL, } from "../services/emailService";
+import { STEP_DEFS, } from "../data/StepDefs";
+import { PHASES, phaseOf, } from "../data/Phases";
+import { STATUS, } from "../data/Constants";
+import { todayISO, fmtDate, } from "../utils/DateUtils";
+import { isBlockedStatus, statusBadgeClass, } from "../utils/StatusUtils";
+import { notifyNewIdea, buildIdeaMailto, EMAILJS_READY, NOTIFY_EMAIL, } from "../services/EmailService";
 import { SopranoMark, } from "../components/Layout/SopranoMark";
 import { ProcessingOverlay, } from "../components/Layout/ProcessingOverlay";
 
