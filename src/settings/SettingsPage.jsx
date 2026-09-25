@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Users, MapPin, ListChecks } from "lucide-react";
+import { ArrowLeft, Users, MapPin, ListChecks } from "lucide-react";
 import { UsersManagement } from "./UsersManagement";
 import { AreasManagement } from "./AreasManagement";
 import { StepAreasManagement } from "./StepAreasManagement";
@@ -10,11 +10,19 @@ const TABS = [
   { id: "steps", label: "Etapas por área", icon: ListChecks },
 ];
 
-function SettingsPage() {
+function SettingsPage({ onBack }) {
   const [tab, setTab] = useState("users");
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-8">
+      <button
+        onClick={onBack}
+        className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 mb-6"
+      >
+        <ArrowLeft size={15} />
+        Voltar
+      </button>
+
       <h1 className="text-2xl font-semibold text-slate-900">
         Configurações
       </h1>
