@@ -5,7 +5,7 @@ import { SopranoMark, } from "./SopranoMark";
 function Header({ setShowNew, projects, isAdmin, canCreate, emAndamento, concluidos, showSettings, setShowSettings, appUser,})
 {
   return (
-    <header className="border-b border-slate-200 bg-white px-8 py-6">
+    <header className="border-b border-slate-200 bg-white px-4 sm:px-8 py-4 sm:py-6">
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-3">
           <SopranoMark />
