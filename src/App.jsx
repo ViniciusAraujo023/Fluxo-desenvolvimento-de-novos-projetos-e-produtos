@@ -172,8 +172,6 @@ function App() {
     (p) => p.status === STATUS.CONCLUIDO
   ).length;
 
-  
-
 return (
   <ProtectedRoute
     user={user}
@@ -198,7 +196,7 @@ return (
         />
 
         {showSettings ? (
-          <SettingsPage />
+          <SettingsPage onBack={() => setShowSettings(false)} />
         ) : (
           <div className="px-8 py-8">
             {showNew && (
