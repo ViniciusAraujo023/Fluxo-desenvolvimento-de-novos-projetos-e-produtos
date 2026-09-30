@@ -33,7 +33,7 @@ function CompleteProfile({ appUser, onDone }) {
         <input
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          placeholder="Seu nome"
+          placeholder="Digite seu nome completo"
           className="w-full rounded-md border border-slate-300 px-3 py-2"
         />
 
