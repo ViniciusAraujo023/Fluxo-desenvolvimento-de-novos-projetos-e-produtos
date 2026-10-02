@@ -1,19 +1,8 @@
-import { Download } from "lucide-react";
 import { FileField } from "./FileField";
 
 function Field({ field, value, onChange, disabled }) {
   const { type, label } = field;
 
-  if (type === "download") {
-    return (
-      <div className="flex flex-col gap-1.5">
-        <span className="text-xs font-mono uppercase tracking-wide text-slate-500">Modelo</span>
-        <button type="button" className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-sky-800 underline decoration-sky-300 underline-offset-2 hover:text-sky-900">
-          <Download size={14} /> {label}
-        </button>
-      </div>
-    );
-  }
   if (type === "file") return <FileField label={label} value={value} onChange={onChange} disabled={disabled} />;
 
   if (type === "text") {
