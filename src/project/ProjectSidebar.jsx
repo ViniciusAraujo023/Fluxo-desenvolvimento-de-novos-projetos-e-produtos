@@ -1,13 +1,17 @@
-import { ArrowLeft, Calendar, User, Check, Circle, X } from "lucide-react";
+import { useState } from "react";
+import { ArrowLeft, Calendar, User, Check, Circle, X, ListTree, Paperclip } from "lucide-react";
 import { STEP_DEFS } from "../data/StepDefs";
 import { PHASES } from "../data/Phases";
 import { fmtDate } from "../utils/DateUtils";
 import { SopranoMark } from "../components/Layout/SopranoMark";
+import { ProjectFilesPanel } from "./ProjectFilesPanel";
 
 function ProjectSidebar({
   project, viewIndex, onSelect, isAdmin, currentUser,
   progressPct, open, onClose, onBack,
 }) {
+  const [tab, setTab] = useState("etapas");
+
   return (
     <>
       {open && (
@@ -42,30 +46,53 @@ function ProjectSidebar({
           </div>
         </div>
 
+        <div className="flex border-b border-slate-800">
+          <button
+            onClick={() => setTab("etapas")}
+            className={`flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium ${
+              tab === "etapas" ? "text-white border-b-2 border-sky-600" : "text-slate-500 hover:text-slate-300"
+            }`}
+          >
+            <ListTree size={13} /> Etapas
+          </button>
+          <button
+            onClick={() => setTab("arquivos")}
+            className={`flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium ${
+              tab === "arquivos" ? "text-white border-b-2 border-sky-600" : "text-slate-500 hover:text-slate-300"
+            }`}
+          >
+            <Paperclip size={13} /> Arquivos
+          </button>
+        </div>
+
         <div className="flex-1 overflow-y-auto py-2">
-          {PHASES.map((phase) => (
-            <div key={phase.id} className="mb-1">
-              <div className="px-5 pt-3 pb-1 text-[10px] font-mono uppercase tracking-widest text-slate-500">{phase.label}</div>
-              {STEP_DEFS.map((s, idx) => {
-                if (idx < phase.range[0] || idx > phase.range[1]) return null;
-                const done = idx < project.currentStep;
-                const current = idx === viewIndex;
-                const reachable = isAdmin ? idx <= project.currentStep : idx <= 1;
-                return (
-                  <button key={idx} disabled={!reachable} onClick={() => { onSelect(idx); onClose(); }}
-                    className={`w-full flex items-center gap-2.5 px-5 py-1.5 text-left text-[13px] transition-colors ${
-                      current ? "bg-sky-800 text-white" : reachable ? "text-slate-300 hover:bg-slate-800" : "text-slate-600 cursor-not-allowed"
-                    }`}>
-                    <span className="shrink-0">
-                      {done && !current ? <Check size={14} className="text-emerald-400" /> : <Circle size={9} className={current ? "fill-white text-white" : "fill-slate-700 text-slate-700"} />}
-                    </span>
-                    <span className="font-mono text-[10px] text-slate-500 w-6 shrink-0">{String(idx + 1).padStart(2, "0")}</span>
-                    <span className="truncate">{s.title}</span>
-                  </button>
-                );
-              })}
-            </div>
-          ))}
+          {tab === "etapas" ? (
+            PHASES.map((phase) => (
+              <div key={phase.id} className="mb-1">
+                <div className="px-5 pt-3 pb-1 text-[10px] font-mono uppercase tracking-widest text-slate-500">{phase.label}</div>
+                {STEP_DEFS.map((s, idx) => {
+                  if (idx < phase.range[0] || idx > phase.range[1]) return null;
+                  const done = idx < project.currentStep;
+                  const current = idx === viewIndex;
+                  const reachable = isAdmin ? idx <= project.currentStep : idx <= 1;
+                  return (
+                    <button key={idx} disabled={!reachable} onClick={() => { onSelect(idx); onClose(); }}
+                      className={`w-full flex items-center gap-2.5 px-5 py-1.5 text-left text-[13px] transition-colors ${
+                        current ? "bg-sky-800 text-white" : reachable ? "text-slate-300 hover:bg-slate-800" : "text-slate-600 cursor-not-allowed"
+                      }`}>
+                      <span className="shrink-0">
+                        {done && !current ? <Check size={14} className="text-emerald-400" /> : <Circle size={9} className={current ? "fill-white text-white" : "fill-slate-700 text-slate-700"} />}
+                      </span>
+                      <span className="font-mono text-[10px] text-slate-500 w-6 shrink-0">{String(idx + 1).padStart(2, "0")}</span>
+                      <span className="truncate">{s.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            ))
+          ) : (
+            <ProjectFilesPanel project={project} />
+          )}
         </div>
       </aside>
     </>
