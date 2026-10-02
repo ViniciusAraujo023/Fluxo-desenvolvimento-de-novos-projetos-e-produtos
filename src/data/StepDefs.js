@@ -44,7 +44,6 @@ const STEP_DEFS = [
     ],
   }},
   { title: "Avaliar custos do projeto de novo produto", fields: [
-    { key: "baixarCusto", label: "Custo anexado", type: "download" },
     { key: "custosValidados", label: "Custos validados", type: "radio", options: OPT_SN },
     { key: "anexarNovoCusto", label: "Anexar novo custo", type: "file" },
     { key: "observacoes", label: "Observações", type: "textarea" },
@@ -60,7 +59,6 @@ const STEP_DEFS = [
     { key: "observacao", label: "Observação", type: "textarea" },
   ]},
   { title: "Testar produto", fields: [
-    { key: "arquivoPadraoTestes", label: "Arquivo padrão de testes", type: "download" },
     { key: "testePreenchido", label: "Teste preenchido", type: "file" },
     { key: "testeValidado", label: "Teste validado", type: "radio", options: OPT_SN },
     { key: "observacoes", label: "Observações", type: "textarea" },
@@ -96,7 +94,6 @@ const STEP_DEFS = [
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
   { title: "Preencher AI", fields: [
-    { key: "baixarModeloAI", label: "Modelo padrão de AI", type: "download" },
     { key: "anexarAI", label: "Anexar AI", type: "file" },
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
@@ -114,12 +111,10 @@ const STEP_DEFS = [
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
   { title: "Cadastrar processo do item", fields: [
-    { key: "planilhaCusto", label: "Planilha de custo", type: "download" },
     { key: "aprovacao", label: "Aprovação", type: "select", options: OPT_AR },
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
   { title: "Cadastrar dados fiscais do item (check do fiscal)", fields: [
-    { key: "cadastroFiscal", label: "Cadastro fiscal", type: "download" },
     { key: "aprovacao", label: "Aprovação", type: "select", options: OPT_AR },
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
@@ -152,7 +147,6 @@ const STEP_DEFS = [
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
   { title: "Validar processos", subtitle: "Ficha padrão try-out", fields: [
-    { key: "fichaPadrao", label: "Ficha padrão try-out", type: "download" },
     { key: "fichaPreenchida", label: "Ficha preenchida", type: "file" },
     { key: "observacoes", label: "Observações", type: "textarea" },
   ]},
